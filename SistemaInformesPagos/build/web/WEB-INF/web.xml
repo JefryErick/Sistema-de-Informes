@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+    
+    <display-name>Sistema de Gestion de Informes</display-name>
+    
+    <!-- Servlet para enviar OTP -->
+    <servlet>
+        <servlet-name>SendOTPServlet</servlet-name>
+        <servlet-class>servlets.SendOTPServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SendOTPServlet</servlet-name>
+        <url-pattern>/sendOTP</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet para verificar OTP -->
+    <servlet>
+        <servlet-name>VerifyOTPServlet</servlet-name>
+        <servlet-class>servlets.VerifyOTPServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VerifyOTPServlet</servlet-name>
+        <url-pattern>/verifyOTP</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Páginas de bienvenida (se mantiene la original y se agrega la nueva) -->
+    <welcome-file-list>
+        <welcome-file>views/index.jsp</welcome-file>
+        <welcome-file>views/login.jsp</welcome-file>
+    </welcome-file-list>
+    
+    <!-- Configuración de sesión -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+</web-app>
