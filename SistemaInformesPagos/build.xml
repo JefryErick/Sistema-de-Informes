@@ -10,6 +10,21 @@
 <project name="SistemaInformesPagos" default="default" basedir=".">
     <description>Builds, tests, and runs the project SistemaInformesPagos.</description>
     <import file="nbproject/build-impl.xml"/>
+    <target name="init">
+        <!-- Crear el directorio de dependencias si no existe -->
+        <mkdir dir="${lib.dir}"/>
+
+        <!-- Copiar el archivo JAR de PostgreSQL al directorio lib -->
+        <copy file="web/WEB-INF/lib/postgresql-42.7.5.jar" todir="${lib.dir}"/>
+    </target>
+    <!-- Otros objetivos como compilación, ejecución, etc. -->
+    <target name="compile" depends="init">
+        <!-- Aquí agregas las tareas de compilación -->
+    </target>
+
+    <target name="run" depends="compile">
+        <!-- Aquí agregas las tareas para ejecutar el proyecto -->
+    </target>    
     <!--
 
     There exist several targets which are by default empty and which can be 
