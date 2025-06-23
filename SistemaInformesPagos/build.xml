@@ -8,8 +8,15 @@
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
 <project name="SistemaInformesPagos" default="default" basedir=".">
+    <!-- Definir la ruta para las librerías -->
+    <property name="lib.dir" value="web/WEB-INF/lib"/>
+
     <description>Builds, tests, and runs the project SistemaInformesPagos.</description>
+    
+    <!-- Importar configuraciones de NetBeans -->
     <import file="nbproject/build-impl.xml"/>
+
+    <!-- Incluir JAR de PostgreSQL en el proyecto -->
     <target name="init">
         <!-- Crear el directorio de dependencias si no existe -->
         <mkdir dir="${lib.dir}"/>
@@ -17,14 +24,25 @@
         <!-- Copiar el archivo JAR de PostgreSQL al directorio lib -->
         <copy file="web/WEB-INF/lib/postgresql-42.7.5.jar" todir="${lib.dir}"/>
     </target>
-    <!-- Otros objetivos como compilación, ejecución, etc. -->
+
+    <!-- Otras configuraciones de compilación -->
     <target name="compile" depends="init">
         <!-- Aquí agregas las tareas de compilación -->
+        <javac srcdir="src" destdir="${build.classes.dir}">
+            <classpath>
+                <fileset dir="${lib.dir}">
+                    <include name="postgresql-42.7.5.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
     </target>
 
+    <!-- Objetivo para ejecutar el proyecto -->
     <target name="run" depends="compile">
         <!-- Aquí agregas las tareas para ejecutar el proyecto -->
-    </target>    
+    </target>
+
+    <!-- Otros objetivos de construcción pueden ser agregados aquí -->   
     <!--
 
     There exist several targets which are by default empty and which can be 
